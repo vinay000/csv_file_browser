@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="column1">
+    <div class="dir" *ngFor="let dir of fileListArray">
+      <a (click)="dir['showFiles'] = !dir['showFiles']">
+        <i class="fa fa-folder" aria-hidden="true"></i>
+        {{dir.dirname}}
+      </a>
+      <br>
+      <div *ngIf="dir.showFiles">
+        <li>
+          <a class="file-list" *ngFor="let file of dir.files" (click)="getDetail(dir.dirname,file)">
+            <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+            {{file}}
+            <br>
+          </a>
+        </li>
+      </div>
+      <br>
+    </div>
+  </div>
+  <div class="column2">
+    <div class="table">
+      <table>
+        <tr>
+          <th *ngFor="let column of fileColumn">
+            {{column}}
+          </th>
+
+        </tr>
+        <tr *ngFor="let detail of filedetailArray">
+          <td *ngFor="let i of detail">{{i}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+
+</div>
